@@ -89,11 +89,17 @@ def cli():
 
 
 @cli.command()
-@click.option('--data-file', help="File containing adoption rates")
-@click.option('--output-file', help='PDF file to save map')
-def make_map(data_file):
+@click.option('--data-file', help="File containing adoption rates", required=True)
+@click.option('--output-file', help='PDF file to save map', default=None)
+def make_map(data_file, output_file):
+    """
+    Generate an infomap from a set of Country : data pairs defined in a JSON file.
+    :param data_file:
+    :param output_file:
+    :return:
+    """
     data = read_json(data_file)
-    plot(data, save_filename='test.pdf')
+    plot(data, save_filename=output_file)
 
 
 @cli.command()
