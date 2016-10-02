@@ -7,7 +7,7 @@ python:
 install:
 
   # Conda
-  - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
   - chmod +x miniconda.sh
   - ./miniconda.sh -b -p $HOME/miniconda
   - export PATH=$HOME/miniconda/bin:$PATH
@@ -16,7 +16,7 @@ install:
   - conda install --yes -n condaenv pip
   - source activate condaenv
   - conda install --yes Click
-  - conda install --channel https://conda.anaconda.org/IOOS cartopy
+  - conda install --yes --channel https://conda.anaconda.org/IOOS cartopy
 
   # Infomap
   - pip install -v -e .
