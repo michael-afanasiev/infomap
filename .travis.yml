@@ -23,4 +23,6 @@ install:
 
 script:
 
-  - infomap
+  # Run tests
+  - python -m pytest
+

@@ -13,7 +13,9 @@ setup(
     include_package_data=True,
     install_requires=[
         'Click',
-        'cartopy'
+        'cartopy',
+        'matplotlib',
+        'pytest'
     ],
     entry_points='''
     [console_scripts]
