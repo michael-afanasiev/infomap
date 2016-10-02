@@ -1,0 +1,26 @@
+language: python
+python:
+
+  # We don't actually use the Travis Python, but this keeps it organized.
+  - "3.5"
+
+install:
+
+  # Conda
+  - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
+  - chmod +x miniconda.sh
+  - ./miniconda.sh -b -p $HOME/miniconda
+  - export PATH=$HOME/miniconda/bin:$PATH
+  - conda update --yes conda
+  - conda create --yes -n condaenv python=$TRAVIS_PYTHON_VERSION
+  - conda install --yes -n condaenv pip
+  - source activate condaenv
+  - conda install --yes Click
+  - conda install --channel https://conda.anaconda.org/IOOS cartopy
+
+  # Infomap
+  - pip install -v -e .
+
+script:
+
+  - infomap
