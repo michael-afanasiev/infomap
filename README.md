@@ -3,6 +3,23 @@ A simple set of scripts to plot colour-coded infographic maps.
 
 [![Build Status](https://travis-ci.org/michael-afanasiev/infomap.svg?branch=master)](https://travis-ci.org/michael-afanasiev/infomap)
 
+To get started, first open up a terminal. Then, clone this repository with the command:
+```
+git clone https://github.com/michael-afanasiev/infomap.git
+```
+ 
+Then, download `Python3.5` for your operating system from [here](https://www.continuum.io/downloads).
+After installing, open up a terminal and install dependencies with
+```
+conda install --yes Click
+conda install --yes --channel https://conda.anaconda.org/IOOS cartopy
+```
+
+Finally, install `infomap` by changing into the base directory, and running
+```
+pip install -v -e .
+```
+
 `infomap` takes a `JSON` file with the format
 ```
 {
