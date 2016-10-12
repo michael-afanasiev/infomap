@@ -11,11 +11,11 @@ import matplotlib.pyplot as plt
 def get_colour(val):
     val = float(val)
     if 0.0 <= val < 25.0:
-        return 'w'
+        return '0.5'
     elif 25.0 <= val < 50.0:
         return 'r'
     elif 50.0 <= val < 75.0:
-        return 'y'
+        return 'b'
     elif 75.0 <= val <= 100.0:
         return 'g'
     raise ValueError("Value for colourmap must be between 0 and 100.")
@@ -40,7 +40,7 @@ def get_countries():
     """
     shpfilename = shpreader.natural_earth(resolution='110m',
                                           category='cultural',
-                                          name='admin_0_countries')
+                                          name='admin_0_map_units')
 
     # Plot usage data.
     reader = shpreader.Reader(shpfilename)
@@ -60,7 +60,7 @@ def plot(data, save_filename=None):
 
     countries = get_countries()
     for country in countries:
-        name = country.attributes['adm0_a3']
+        name = country.attributes['abbrev']
         if name in data.keys():
             ax.add_geometries(country.geometry, ccrs.PlateCarree(),
                               facecolor=get_colour(data[name]), label=name,
@@ -109,5 +109,5 @@ def print_country_codes():
     """
     countries = get_countries()
     for country in countries:
-        print(country.attributes['adm0_a3'] + ':',
+        print(country.attributes['abbrev'] + ':',
               country.attributes['name_long'])
